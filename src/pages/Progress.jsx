@@ -48,7 +48,7 @@ export default function Progress() {
     <Box>
       <Typography variant="h4" gutterBottom>Learning progress</Typography>
       <CardGrid min={200}>
-        <StatCard label="Enrolled courses" value={rows.length} icon={<School />} /> 
+        <StatCard label="Enrolled courses" value={rows.length} icon={<School />} />
         <StatCard label="Completed courses" value={t.completed} icon={<Done />} />
         <StatCard label="In progress" value={t.inProg} icon={<Pending />} />
         <StatCard label="Total lessons" value={t.total} icon={<Menu />} />

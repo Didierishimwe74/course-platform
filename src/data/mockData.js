@@ -29,4 +29,9 @@ export const seedEnrollments = () => courses.slice(0, 10).map((c, i) => {
   return { courseId: c.id, enrolledAt: daysAgo(60 - i * 3), completed, lastLessonId: ls[Math.min(n, 5)].id, lastAccessed: last, completedAt: n === 6 ? last : null };
 });
 
-export const defaultProfile = { studentId: 'STU-2026-014', regNo: 'RP/KAR/26/0142', fullName: 'Didier', email: 'student@rpkarongi.ac.rw', phone: '+250780000000', programme: 'Information Technology', level: 'Level 6', academicYear: '2026/2027' };
+export const defaultProfile = user => ({
+  studentId: `STU-2026-${String(user.id).replace(/\D/g, '').slice(-3).padStart(3, '0') || '014'}`,
+  regNo: `RP/KAR/26/${String(user.id).replace(/\D/g, '').slice(-4).padStart(4, '0') || '0142'}`,
+  fullName: user.fullName, email: user.email, phone: user.phone,
+  programme: 'Information Technology', level: 'Level 6', academicYear: '2026/2027',
+});

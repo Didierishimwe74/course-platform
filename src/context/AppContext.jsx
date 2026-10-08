@@ -6,9 +6,10 @@ import { courses, lessonsByCourse, seedEnrollments, defaultProfile } from '../da
 const Ctx = createContext(null);
 export const useApp = () => useContext(Ctx);
 
-export function AppProvider({ children }) {
-  const [enrollments, setEnrollments] = useLocalStorage('ocmp_enrollments', seedEnrollments);
-  const [profile, setProfile] = useLocalStorage('ocmp_profile', defaultProfile);
+// One provider per logged-in user: data is stored under that user's id (mount it with key={user.id}).
+export function AppProvider({ user, children }) {
+  const [enrollments, setEnrollments] = useLocalStorage(`ocmp_enrollments_${user.id}`, () => (user.demo ? seedEnrollments() : []));
+  const [profile, setProfile] = useLocalStorage(`ocmp_profile_${user.id}`, () => defaultProfile(user));
   const [toast, setToast] = useState(null);
   const notify = (message, severity = 'success') => setToast({ message, severity });
   const getEnrollment = id => enrollments.find(e => e.courseId === id);

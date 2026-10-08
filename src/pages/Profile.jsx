@@ -32,7 +32,7 @@ export default function Profile() {
       </Box>
       <Box component="form" onSubmit={save} noValidate sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' } }}>
         {ro('Student ID', 'studentId')}{ro('Registration number', 'regNo')}
-        {ed('Full name', 'fullName')}{ed('Email', 'email')}{ed('Phone', 'phone')}{ed('Programme', 'programme')}
+        {ed('Full name', 'fullName')}{ro('Email (account login)', 'email')}{ed('Phone', 'phone')}{ed('Programme', 'programme')}
         {ro('Level', 'level')}{ro('Academic year', 'academicYear')}
         <Box sx={{ gridColumn: '1 / -1' }}><Button type="submit" variant="contained">Save changes</Button></Box>
       </Box>

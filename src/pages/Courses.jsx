@@ -4,7 +4,6 @@ import { useApp } from '../context/AppContext';
 import { categories, levels, statuses } from '../data/mockData';
 import { CourseCard, CardGrid, Empty } from '../components/Common';
 
-
 const init = { q: '', category: '', level: '', duration: '', status: '', sort: 'title' };
 const bucket = h => (h <= 8 ? 'Short' : h <= 14 ? 'Medium' : 'Long');
 
